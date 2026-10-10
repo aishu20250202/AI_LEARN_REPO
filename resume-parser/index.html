@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0 → Shipped · Resume Parser</title>
+  <meta name="description" content="Upload a PDF resume and get a score, the skills you show, and the skills you're missing — parsed entirely in your browser." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- pdf.js reads the PDF in the browser; no server involved -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <nav class="nav">
+    <span class="brand">0 → <em>shipped</em></span>
+    <a class="nav-link" href="#how">How it works</a>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow">100% in your browser · no sign-up · no uploads</p>
+    <h1>Take your resume from <span class="grad">0 to shipped</span></h1>
+    <p class="sub">
+      Drop in a PDF. Get a ship score, the skills your resume already shows,
+      and the ones it's missing — before a recruiter ever sees it.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="#upload">Upload your resume</a>
+      <button class="btn ghost" id="sampleBtn" type="button">Try a sample</button>
+    </div>
+  </header>
+
+  <section id="upload" class="card uploader">
+    <label class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden />
+      <div class="dz-icon" aria-hidden="true">📄</div>
+      <p class="dz-title">Drag &amp; drop your resume PDF</p>
+      <p class="dz-sub">or click to browse — PDF only, parsed locally</p>
+    </label>
+    <div class="file-meta" id="fileMeta" hidden>
+      <span id="fileName"></span>
+      <span class="file-size" id="fileSize"></span>
+      <button class="linklike" id="clearBtn" type="button">Clear</button>
+    </div>
+    <p class="status" id="status" hidden></p>
+  </section>
+
+  <section id="results" class="card results" hidden>
+    <h2>Analysis</h2>
+    <div class="results-grid">
+      <div class="score-box">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 120 120" class="ring" aria-hidden="true">
+            <circle class="ring-track" cx="60" cy="60" r="54" />
+            <circle class="ring-bar" id="ringBar" cx="60" cy="60" r="54" />
+          </svg>
+          <div class="ring-center">
+            <span class="score-num" id="scoreNum">0</span>
+            <span class="score-of" id="scoreOf"></span>
+          </div>
+        </div>
+        <p class="score-label" id="scoreLabel"></p>
+      </div>
+      <div class="skills-box">
+        <div class="skill-group">
+          <h3>Skills present <span class="count" id="presentCount"></span></h3>
+          <ul class="chips" id="presentChips"></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Skills missing <span class="count" id="missingCount"></span></h3>
+          <ul class="chips" id="missingChips"></ul>
+          <p class="hint">Only add a missing skill if you've actually used it — keyword-stuffing reads worse than a gap.</p>
+        </div>
+      </div>
+    </div>
+    <p class="method-note">
+      How the score works: it's the share of <span id="skillTotal"></span> core
+      developer skills found in your resume's text. It's a keyword check, not a
+      human review — context and projects matter too.
+    </p>
+  </section>
+
+  <section id="how" class="how">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><h3>Upload a PDF</h3><p>Your file never leaves the browser — it's read locally.</p></div>
+      <div class="step"><span class="step-num">2</span><h3>Text gets scanned</h3><p>Every page is extracted and matched against a core skills list.</p></div>
+      <div class="step"><span class="step-num">3</span><h3>Score + gaps</h3><p>See what you present well and what to learn or add next.</p></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built as a mock for the <strong>0 → shipped</strong> resume parser. Parsing happens in your browser via pdf.js — nothing is uploaded.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
