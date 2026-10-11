@@ -1,0 +1,58 @@
+/* Styles for the JD input and the neutral chip variant — everything else
+   lives in index.css. */
+
+.jd-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.jd-box textarea {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.jd-box textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.analyze-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+.chips li.neutral {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--muted);
+}
+
+.jd-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
